@@ -7,5 +7,5 @@ class Appartment(models.Model):
     description = models.TextField(blank=False)
     site = models.TextField(blank=False)
     is_rented = models.BooleanField(default=False)
-    lessor_number = models.IntegerField(default="...")
-    lessor_name = models.CharField(max_length=255, blank=True)
+    lessor_number = models.IntegerField(default="...", unique=True)
+    lessor_name = models.CharField(max_length=255, blank=True, unique=True)

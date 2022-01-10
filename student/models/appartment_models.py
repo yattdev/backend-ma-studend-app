@@ -12,5 +12,5 @@ class Appartment(models.Model):
     lessor_name = models.CharField(max_length=255, blank=True, unique=True)
     image = ResizedImageField(size=[350, 280],
                               default='appartement-default.jpg',
-                              crop=['left', 'rigth'],
+                              crop=['top', 'left'],
                               upload_to='appartements_images')

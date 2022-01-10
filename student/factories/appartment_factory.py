@@ -20,9 +20,9 @@ class AppartementFactory(factory.django.DjangoModelFactory):
     description = fake.text()
     site = fake.address()
     is_rented = fake.boolean()
-    lessor_name = fake.LazyFunction(fake.unique.name)
-    lessor_number = fake.LazyFunction(fake.unique.phone_number)
+    lessor_name = factory.LazyFunction(fake.unique.name)
+    lessor_number = factory.LazyFunction(fake.unique.msisdn)
     image = factory.django.ImageField(width=350,
                                       height=280,
-                                      filename=fake.LazyFunction(
+                                      filename=factory.LazyFunction(
                                           fake.unique.name))

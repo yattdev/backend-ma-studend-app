@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from student.tests.models import tests_appartment
+from student.tests import models
 
-__all__ = [tests_appartment]
+__all__ = [models]

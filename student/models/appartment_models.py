@@ -8,7 +8,7 @@ class Appartment(models.Model):
     description = models.TextField(blank=False)
     site = models.TextField(blank=False)
     is_rented = models.BooleanField(default=False)
-    lessor_number = models.IntegerField(default="...", unique=True)
+    lessor_number = models.BigIntegerField(default="...", unique=True)
     lessor_name = models.CharField(max_length=255, blank=True, unique=True)
     image = ResizedImageField(size=[350, 280],
                               default='appartement-default.jpg',

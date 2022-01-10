@@ -55,7 +55,7 @@ RUN usermod -aG root alassane
 
 # Set work directory
 ENV HOME=/home/alassane
-ENV APP_HOME=/home/alassane/django_vps
+ENV APP_HOME=/home/alassane/project
 WORKDIR $APP_HOME
 
 # Add path
@@ -95,4 +95,4 @@ RUN apt-get autoremove
 USER alassane
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/alassane/django_vps/utils_shortcuts/entrypoint.prod.sh"]
+ENTRYPOINT ["/home/alassane/project/utils_shortcuts/entrypoint.prod.sh"]

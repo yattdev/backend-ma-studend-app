@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
 on:
   push:
-    branches: [ main ]
+    branches: [ test ]
 
 jobs: # This comment for test CI/CI and final correction
   continuous-integration:

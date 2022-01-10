@@ -9,5 +9,13 @@ class AppartmentSerializer(serializers.ModelSerializer):
     """ Class serializer for Appartment models from student app"""
     class Meta:
         model = Appartment
-        field = '__all__'
+        fields = [
+            'id',
+            'lessor_name',
+            'lessor_number',
+            'description',
+            'site',
+            'is_rented',
+            'image',
+        ]
         read_only_fields = ['id', 'lessor_name', 'lessor_number']

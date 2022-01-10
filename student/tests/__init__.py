@@ -3,4 +3,4 @@
 
 from student.tests import models
 
-__all__ = [models]
+__all__ = ['models']

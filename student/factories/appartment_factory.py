@@ -3,7 +3,7 @@
 
 import factory
 from faker import Faker
-from student.models.appartment_models import Appartment
+from student.models.appartment import Appartment
 
 # Create object faker
 fake = Faker()

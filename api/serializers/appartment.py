@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from rest_framework import serializers
-from student.models.appartment_models import Appartment
+from student.models.appartment import Appartment
 
 
 class AppartmentSerializer(serializers.ModelSerializer):

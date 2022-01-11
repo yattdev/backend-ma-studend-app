@@ -42,9 +42,9 @@ urlpatterns = [
     path('admin-web-students/', admin.site.urls),
     path('api/v1/', include('api.urls')),
     # swagger logout url
-    path('accounts/logout/',
+    path('account/logout/',
          RedirectView.as_view(url=reverse_lazy('users:logout'))),
-    path('accounts/login/',
+    path('account/login/',
          RedirectView.as_view(url=reverse_lazy('users:login'))),
     path('', RedirectView.as_view(url=reverse_lazy('openapi-schemas'))),
     path('api/v1/docs/',

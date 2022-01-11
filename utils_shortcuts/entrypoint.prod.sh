@@ -23,7 +23,9 @@ fi
 if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     echo "-- First container startup --"
     # Update database with migrate
-    python manage.py makemigrations users student api --noinput --traceback && sleep 1
+    python manage.py makemigrations users --noinput --traceback && sleep 1
+    python manage.py makemigrations student --noinput --traceback && sleep 1
+    python manage.py makemigrations api --noinput --traceback && sleep 1
     python manage.py migrate --noinput --traceback && sleep 1
 
     # Run test with test

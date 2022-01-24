@@ -4,10 +4,11 @@ services:
     web_student:
         depends_on:
           - db_student
+
     db_student:
         image: postgres:12-alpine
 
-    redis:
+    redis_student:
         image: redis:alpine
         ports:
             - 6379

@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+    web_student:
+        restart: always
+        build:
+            context: .
+            dockerfile: ./Dockerfile.prod
+        command: gunicorn backend.wsgi:application --bind 0.0.0.0:9000
+        env_file:
+            - ./.env_file/local/.local.env # content env variable for databases and django
+        volumes:
+          - static_volume:/home/alassane/project/staticfiles
+          - media_volume:/home/alassane/project/mediafiles
+          - .:/home/alassane/project
+        expose:
+            - 9000
+        depends_on:
+          - db_student
+        networks: # Attach web app to nginx_network, for make available for nginx-proxy
+            - web_student
+            - nginx_network
+
+    db_student:
+        image: postgres:12-alpine
+        restart: always
+        volumes:
+            - db_student_postgres:/var/lib/postgresql/data/
+        env_file:
+            - ./.env_file/local/.local.db.env # content env variable for databases and django
+        networks: # To make db_student services accessible on web_student
+            - web_student
+
+    redis_student:
+        restart: always
+        environment:
+            REDIS_HOST: "redis_student"
+            REDIS_URL: "redis://redis_student:6379"
+        networks: # To make db_student services accessible on web_student
+            - web_student
+
+    celery_student:
+        restart: always
+        build:
+          context: .
+          dockerfile: ./Dockerfile.celery.prod
+        command: celery -A backend worker -l info
+        volumes:
+          - .:/home/alassane/project
+        env_file:
+            - ./.env_file/local/.local.celery.env # content env variable for databases and django
+        depends_on:
+          - db_student
+          - redis_student
+          - web_student
+        networks:
+          - web_student # To build celery on web_student
+
+    celery_beat_student:
+        restart: always
+        build:
+          context: .
+          dockerfile: ./Dockerfile.celery.prod
+        command: celery -A backend beat -l info
+        volumes:
+          - .:/home/alassane/project
+        env_file:
+            - ./.env_file/local/.local.celery.env # content env variable for databases and django
+        depends_on:
+          - db_student
+          - redis_student
+          - web_student
+        networks:
+          - web_student # To build celery on web_student
+
+# Network create in docker host, to separate container between network
+networks:
+    nginx_network: # This networks contains nginx-proxy, already exists.
+        external: true
+        name: nginx_server_nginx_network
+    web_student:
+
+volumes:
+    db_student_postgres:
+    static_volume:
+    media_volume:
+    vhost:
+    certs:
+    html:
+    acme:

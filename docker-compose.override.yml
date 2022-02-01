@@ -84,7 +84,3 @@ volumes:
     db_student_postgres:
     static_volume:
     media_volume:
-    vhost:
-    certs:
-    html:
-    acme:

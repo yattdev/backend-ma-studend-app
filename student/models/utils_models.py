@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Communaute(models.Model):
-    """ Model for Communauté """
+    """ Communauté models from student app """
     name = models.CharField(max_length=100,
                             verbose_name="Nom de l'association",
                             null=False,
@@ -14,7 +14,7 @@ class Communaute(models.Model):
 
 
 class AllowedNumber(models.Model):
-    """ Model for allowed phone number """
+    """ Model for allowed phone number from student app """
     phone = models.CharField(max_length=10,
                              unique=True,
                              null=False,

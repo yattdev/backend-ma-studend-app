@@ -1,6 +1,9 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from student.models.utils_models import Communaute
 
 USER_ROLES = [('Admin', 'Admin'), ('Staff', 'Staff'),
               ('Utilisateur', 'Utilisateur')]
@@ -49,7 +52,16 @@ class UserAccount(AbstractUser):
     role = models.CharField(max_length=40,
                             choices=USER_ROLES,
                             default='Utilisateur')
+    # Student have to provide a valide phone number associate to an organisation
+    #to be able sign up
+    phone = models.CharField(verbose_name="Whats'app",
+                             max_length=10,
+                             null=True,
+                             blank=True)
 
+    communaute = models.ForeignKey(Communaute,
+                                   null=True,
+                                   on_delete=models.CASCADE)
     USERNAME_FIELD = 'username'
 
     REQUIRED_FIELDS = ['email', 'password']
@@ -61,3 +73,9 @@ class UserAccount(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def clean(self):
+        if self.phone not in self.communaute.phones:
+            ValidationError(
+                _("Votre numero de telephone, n'est reconnus dans aucune communaute"
+                  ))

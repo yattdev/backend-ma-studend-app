@@ -20,22 +20,13 @@ RUN apt-get update && \
 
 # lint
 RUN python3 -m pip install --upgrade pip setuptools wheel
-# Install pipenv to generate requirements.txt
-RUN pip install pipenv --no-cache-dir
-# RUN pip install flake8==3.9.2
 
 # copy dir
 COPY . .
+
 # Check code with flake8
+# RUN pip install flake8==3.9.2
 # RUN flake8 --ignore=E501,F401 .
-
-# Generate/Update requirements.txt and Clean Pipfile.lock
-RUN pipenv lock -r > requirements.txt
-Run pipenv --rm
-
-# Uninstall pipenv
-RUN pipenv --clear && \
-        pip uninstall -y pipenv virtualenv-clone virtualenv
 
 # install dependencies
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt

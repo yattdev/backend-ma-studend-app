@@ -55,7 +55,7 @@ class UserAccount(AbstractUser):
     # Student have to provide a valide phone number associate to an organisation
     #to be able sign up
     phone = models.CharField(verbose_name="Whats'app",
-                             max_length=10,
+                             max_length=20,
                              null=True,
                              blank=True)
 

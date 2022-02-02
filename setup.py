@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='ma-student',
+    name='mastudent',
     version='1.0',
     description='A Django RestFul API For appartment locaiton',
     author='Alassane Yattara',

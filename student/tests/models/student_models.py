@@ -4,7 +4,7 @@ import os
 import shutil
 
 from django.test import TestCase, override_settings
-from student.models.student import Student
+from student.models.student_models import Student
 from student.factories.student_factory import StudentFactory
 from django.conf import settings
 

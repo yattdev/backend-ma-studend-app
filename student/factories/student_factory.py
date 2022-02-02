@@ -3,7 +3,7 @@
 
 from faker import Faker
 import factory
-from student.models.student import Student
+from student.models.student_models import Student
 from users.factories import UserFactory
 
 faker = Faker()

@@ -44,7 +44,7 @@ itypes==1.2.0
 Jinja2==3.0.3
 jsmin==3.0.0
 kombu==5.2.2
--e git+ssh://git@github.com/yattdev/backend-ma-studend-app.git@c631e803c0399c5545892aa166a03ce195fc397c#egg=ma_student
+-e git+https://github.com/yattdev/backend-ma-studend-app.git@561edb6a005b1f98202b1bfeac54c69540a1274c#egg=ma_student
 Markdown==3.3.6
 MarkupSafe==2.0.1
 oauthlib==3.1.1

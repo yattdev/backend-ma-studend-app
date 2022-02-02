@@ -2,5 +2,5 @@
 # -*- coding: utf-8 -*-
 
 from .appartment import AppartmentTestCase
-
-__all__ = ['AppartmentTestCase']
+from .student import StudentFactory
+from .utils_models import CommunauteTestCase, AllowedNumberTestCase

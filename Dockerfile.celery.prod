@@ -18,6 +18,7 @@ RUN apt-get update && \
     apt-get install -y libffi-dev && \
     apt-get install -y git
     # intall git, need it to clone project from github from it link in requirements
+    # apt-get install -y jpeg-dev zlib-dev libjpeg && \
 
 # lint
 RUN python3 -m pip install --upgrade pip setuptools wheel

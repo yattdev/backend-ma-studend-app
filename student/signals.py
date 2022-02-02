@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.auth import get_user_model
-from student.models.student import Student
+from student.models.student_models import Student
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 

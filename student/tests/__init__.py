@@ -2,5 +2,3 @@
 # -*- coding: utf-8 -*-
 
 from student.tests import models
-
-__all__ = ['models']

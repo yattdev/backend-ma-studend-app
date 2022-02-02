@@ -9,6 +9,6 @@ setup(
     description='A Django RestFul API For appartment locaiton',
     author='Alassane Yattara',
     author_email='alassane@yatt.tech',
-    url='https://student.remote.yatt.tech/api/v1/docs/',
+    url='https://github.com/yattdev/backend-ma-studend-app.git',
     packages=find_packages(),
 )

@@ -3,16 +3,16 @@
 
 from faker import Faker
 import factory
-from student.models.utils_models import Communaute, AllowedNumber
+from student.models.utils_models import Community, AllowedNumber
 
 faker = Faker()
 
 
-class CommunauteFactory(factory.django.DjangoModelFactory):
-    """ Class Factory for Communaute models from student app """
+class CommunityFactory(factory.django.DjangoModelFactory):
+    """ Class Factory for Community models from student app """
     class Meta:
-        """ Class Meta in CommunauteFactory """
-        model = Communaute
+        """ Class Meta in CommunityFactory """
+        model = Community
         django_get_or_create = ("name", )
 
     name = factory.LazyAttribute(lambda x: faker.company())
@@ -26,4 +26,4 @@ class AllowedNumberFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ("phone", )
 
     phone = factory.LazyAttribute(lambda x: faker.msisdn())
-    communaute = factory.SubFactory(CommunauteFactory)
+    community = factory.SubFactory(CommunityFactory)

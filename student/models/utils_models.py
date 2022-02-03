@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-class Communaute(models.Model):
+class Community(models.Model):
     """ Communauté models from student app """
     name = models.CharField(max_length=100,
                             verbose_name="Nom de l'association",
@@ -22,10 +22,10 @@ class AllowedNumber(models.Model):
                              null=False,
                              blank=False,
                              verbose_name="Whats'app")
-    communaute = models.ForeignKey(Communaute,
-                                   related_name="phones",
-                                   on_delete=models.CASCADE,
-                                   verbose_name="Communauté")
+    community = models.ForeignKey(Community,
+                                  related_name="phones",
+                                  on_delete=models.CASCADE,
+                                  verbose_name="Communauté")
 
     def clean(self):
         if len(self.phone) > 20:

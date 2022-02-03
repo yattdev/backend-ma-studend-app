@@ -14,7 +14,7 @@ from django.conf import settings
 class ProfileTestCase(TestCase):
     """ TestCase for Profile models from from student app """
     @classmethod
-    def setUpClass(cls):
+    def setUpTestData(cls):
         # Create a bactch of student
         cls.students = ProfileFactory.create_batch(10)
 

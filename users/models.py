@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from student.models.utils_models import Communaute
+from student.models.utils_models import Community
 
 USER_ROLES = [('Admin', 'Admin'), ('Staff', 'Staff'),
               ('Utilisateur', 'Utilisateur')]
@@ -59,9 +59,9 @@ class UserAccount(AbstractUser):
                              null=True,
                              blank=True)
 
-    communaute = models.ForeignKey(Communaute,
-                                   null=True,
-                                   on_delete=models.CASCADE)
+    community = models.ForeignKey(Community,
+                                  null=True,
+                                  on_delete=models.CASCADE)
     USERNAME_FIELD = 'username'
 
     REQUIRED_FIELDS = ['email', 'password']
@@ -75,7 +75,7 @@ class UserAccount(AbstractUser):
         return self.username
 
     def clean(self):
-        if self.phone not in self.communaute.phones:
+        if self.phone not in self.community.phones:
             ValidationError(
-                _("Votre numero de telephone, n'est reconnus dans aucune communaute"
+                _("Votre numero de telephone, n'est reconnus dans aucune community"
                   ))

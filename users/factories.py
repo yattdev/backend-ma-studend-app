@@ -5,7 +5,7 @@ import factory
 from faker import Faker
 from django.contrib.auth import get_user_model
 from student import signals
-from student.factories.utils_models_factory import CommunauteFactory
+from student.factories.utils_models_factory import CommunityFactory
 
 # Create object faker
 fake = Faker()
@@ -28,7 +28,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     password = factory.LazyAttribute(lambda x: fake.password())
     email = factory.LazyAttribute(lambda x: fake.email())
     phone = factory.LazyAttribute(lambda x: fake.msisdn())
-    communaute = factory.SubFactory(CommunauteFactory)
+    communaute = factory.SubFactory(CommunityFactory)
     is_superuser = False
 
 
@@ -45,5 +45,5 @@ class AdminFactory(factory.django.DjangoModelFactory):
     password = factory.LazyAttribute(lambda x: fake.password())
     email = factory.LazyAttribute(lambda x: fake.email())
     phone = factory.LazyAttribute(lambda x: fake.msisdn())
-    communaute = factory.SubFactory(CommunauteFactory)
+    communaute = factory.SubFactory(CommunityFactory)
     is_superuser = True

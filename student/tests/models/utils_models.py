@@ -23,6 +23,11 @@ class CommunauteTestCase(TestCase):
     def test_is_community_is_created(self):
         self.assertEqual(Communaute.objects.all().count(), 10)
 
+    # This function is about to drop from database after TestCase
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+
 
 class AllowedNumberTestCase(TestCase):
     """ TestCase for models AllowedNumber from student app """
@@ -36,3 +41,8 @@ class AllowedNumberTestCase(TestCase):
 
     def test_if_allowed_numbers_are_created(self):
         self.assertEqual(AllowedNumber.objects.all().count(), 200)
+
+    # This function is about to drop from database after TestCase
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()

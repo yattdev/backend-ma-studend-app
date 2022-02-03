@@ -18,7 +18,7 @@ class AllowedNumberTestCase(TestCase):
         cls.allowNbs = AllowedNumberFactory.create_batch(200)
 
         # Get a allowed number from database
-        cls.nb = AllowedNumber.objects.get(id=105)
+        cls.nb = AllowedNumber.objects.get(id=cls.allowNbs[105].id)
 
     def test_if_allowed_numbers_are_created(self):
         self.assertEqual(AllowedNumber.objects.all().count(), 200)

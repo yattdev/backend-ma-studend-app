@@ -67,8 +67,8 @@ INSTALLED_APPS = [
 
     # local
     'api',  # endpoint app
-    'users',  # app to manage users
     'student',  # app to manage students issue.
+    'users',  # app to manage users
 ]
 
 AUTH_USER_MODEL = 'users.UserAccount'

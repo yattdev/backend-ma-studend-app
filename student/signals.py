@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.auth import get_user_model
-from student.models.student_models import Student
+from student.models.profile_models import Profile
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
@@ -10,14 +10,14 @@ from django.db.models.signals import post_save
 User = get_user_model()
 
 
-# Create student profile, while create user signal is triggle
+# Create profile, while create user signal is triggle
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        Student.objects.create(user=instance)
+        Profile.objects.create(user=instance)
 
 
 # Save profile when user save signal triggle
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
-    instance.student.save()
+    instance.profile.save()

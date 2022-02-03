@@ -9,7 +9,7 @@ from django_resized import ResizedImageField
 User = get_user_model()
 
 
-class Student(models.Model):
+class Profile(models.Model):
     """ Student Profile """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = ResizedImageField(verbose_name="Image du profile",

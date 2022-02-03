@@ -4,30 +4,30 @@ import os
 import shutil
 
 from django.test import TestCase, override_settings
-from student.models.student_models import Student
-from student.factories.student_factory import StudentFactory
+from student.models.profile_models import Profile
+from student.factories.profile_factory import ProfileFactory
 from django.conf import settings
 
 
 @override_settings(MEDIA_ROOT=os.path.join(settings.BASE_DIR,
                                            "media_dir_for_studentTestCaste/"))
-class StudentTestCase(TestCase):
-    """ TestCase for Student models from from student app """
+class ProfileTestCase(TestCase):
+    """ TestCase for Profile models from from student app """
     @classmethod
     def setUpClass(cls):
         # Create a bactch of student
-        cls.students = StudentFactory.create_batch(10)
+        cls.students = ProfileFactory.create_batch(10)
 
         # Get to student from database
-        cls.fourthStudent = Student.objects.get(id=3)
+        cls.fourthProfile = Profile.objects.get(id=3)
 
     def test_if_students_is_created(self):
-        self.assertEqual(Student.objects.all().count(), 10)
+        self.assertEqual(Profile.objects.all().count(), 10)
 
-    def test_if_student_image_is_saved(self):
+    def test_if_profile_image_is_saved(self):
         self.assertTrue(
             os.path.exists(f"{settings.MEDIA_ROOT}",
-                           f"{self.fourthStudent.profile_image}"))
+                           f"{self.fourthProfile.profile_image}"))
 
     @classmethod
     def tearDownClass(cls):

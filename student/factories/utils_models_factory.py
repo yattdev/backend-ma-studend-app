@@ -15,7 +15,7 @@ class CommunauteFactory(factory.django.DjangoModelFactory):
         model = Communaute
         django_get_or_create = ("name", )
 
-    name = factory.LazyAttribute(lambda: faker.company())
+    name = factory.LazyAttribute(lambda x: faker.company())
 
 
 class AllowedNumberFactory(factory.django.DjangoModelFactory):
@@ -25,5 +25,5 @@ class AllowedNumberFactory(factory.django.DjangoModelFactory):
         model = AllowedNumber
         django_get_or_create = ("phone", )
 
-    phone = factory.LazyAttribute(lambda: fake.msisdn())
+    phone = factory.LazyAttribute(lambda x: faker.msisdn())
     communaute = factory.SubFactory(CommunauteFactory)

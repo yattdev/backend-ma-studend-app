@@ -6,7 +6,7 @@ from faker import Faker
 from student.models.appartment import Appartment
 
 # Create object faker
-fake = Faker()
+faker = Faker()
 
 
 class AppartementFactory(factory.django.DjangoModelFactory):
@@ -17,12 +17,12 @@ class AppartementFactory(factory.django.DjangoModelFactory):
         # Solution for unique contraint field
         django_get_or_create = ('lessor_name', 'lessor_number')
 
-    description = fake.text()
-    site = fake.address()
-    is_rented = fake.boolean()
-    lessor_name = factory.LazyFunction(fake.unique.name)
-    lessor_number = factory.LazyFunction(fake.unique.msisdn)
+    description = faker.text()
+    site = faker.address()
+    is_rented = faker.boolean()
+    lessor_name = factory.LazyFunction(lambda x: faker.unique.name())
+    lessor_number = factory.LazyFunction(lambda x: faker.unique.msisdn())
     image = factory.django.ImageField(width=350,
                                       height=280,
                                       filename=factory.LazyFunction(
-                                          fake.unique.name))
+                                          faker.unique.name))

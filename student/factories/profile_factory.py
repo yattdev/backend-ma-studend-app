@@ -3,17 +3,17 @@
 
 from faker import Faker
 import factory
-from student.models.student_models import Student
+from student.models.profile_models import Profile
 from users.factories import UserFactory
 
 faker = Faker()
 
 
-class StudentFactory(factory.django.DjangoModelFactory):
-    """ Student profile factory """
+class ProfileFactory(factory.django.DjangoModelFactory):
+    """ Profile profile factory """
     class Meta:
         """ Class Meta """
-        model = Student
+        model = Profile
         django_get_or_create = ("user", )
 
     user = factory.SubFactory(UserFactory)

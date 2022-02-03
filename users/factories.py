@@ -28,7 +28,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     password = factory.LazyAttribute(lambda x: fake.password())
     email = factory.LazyAttribute(lambda x: fake.email())
     phone = factory.LazyAttribute(lambda x: fake.msisdn())
-    communaute = factory.SubFactory(CommunityFactory)
+    community = factory.SubFactory(CommunityFactory)
     is_superuser = False
 
 
@@ -45,5 +45,5 @@ class AdminFactory(factory.django.DjangoModelFactory):
     password = factory.LazyAttribute(lambda x: fake.password())
     email = factory.LazyAttribute(lambda x: fake.email())
     phone = factory.LazyAttribute(lambda x: fake.msisdn())
-    communaute = factory.SubFactory(CommunityFactory)
+    community = factory.SubFactory(CommunityFactory)
     is_superuser = True

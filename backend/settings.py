@@ -24,11 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def location(x):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
 
-
-if os.environ.get('ENV') != 'PRODUCTION' and not os.environ.get('IS_DOCKER'):
-    # Take environment variables from local.env file
-    # if not production mode and not in docker
-    environ.Env.read_env(location('./.env_file/local/.local.env'))
+environ.Env.read_env(location('./.env_file/local/.local'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -314,12 +310,3 @@ if os.environ.get('ENV') == 'PRODUCTION':
     EMAIL_USE_TLS = True
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
-# Celery stuff configutation
-#  BROKER_URL = 'redis://localhost:6379'
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Africa/Casablanca'

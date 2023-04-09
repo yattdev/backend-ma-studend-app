@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <div class="apartment">
+        <img src="{{ apartment.image.url }}" alt="{{ apartment.name }} ">
+        <h3>{{ apartment.name }}
+             {% if apartment.is_available %}
+                    <span style="color:#00FF00">disponible</span>
+                {% else %}
+                    <span style="color:#FF0000">occupé</span>
+                {% endif %}
+        </h3>
+          <p>Chambres: {{ apartment.bed_rooms }} Salle de bain : {{ apartment.bath_rooms }}<br>
+                Prix : {{ apartment.price }}<br>
+                Meubles: <br>
+              {% for amenity in apartment.amenities.all %}
+                  - {{ amenity }}<br>
+              {% endfor %}
+          </p>
+        <button class="contact">Contacter le propriétaire</button>
+      </div>
+{% endblock %}

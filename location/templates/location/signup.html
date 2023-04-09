@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+      <h2>Connexion</h2>
+      <div class="form-group">
+        <label for="username">Nom d'utilisateur:</label>
+        <input type="text" class="form-control" id="username" placeholder="Entrer nom d'utilisateur" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe:</label>
+        <input type="password" class="form-control" id="password" placeholder="Entrer password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Nom d'utilisateur:</label>
+        <input type="email" class="form-control" id="email" placeholder="Entrer email" name="email" required>
+      </div>
+        <div class="form-group">
+        <label for="number">Nom d'utilisateur:</label>
+        <input type="number" class="form-control" id="number" placeholder="Entrer votre numéro" name="number" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Connexion</button>
+    </form>
+{% endblock %}
